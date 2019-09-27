@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="app_name">DialerApp</string>
+
+    <!-- MainActivity -->
+    <string name="activity_main_text_code_row_01">try {</string>
+    <string name="activity_main_text_code_row_02">\tIntent intent = new Intent(Intent.ACTION_CALL);</string>
+    <string name="activity_main_text_code_row_03">\tintent.setData(Uri.parse("tel:+79999999999"));</string>
+    <string name="activity_main_text_code_row_04">\tstartActivity(intent);</string>
+    <string name="activity_main_text_code_row_05">} catch (Exception ignored) {}</string>
+    <string name="activity_main_button_text">\tCall me</string>
+    <!-- /MainActivity -->
+
+</resources>

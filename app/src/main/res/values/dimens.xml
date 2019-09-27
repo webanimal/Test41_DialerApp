@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="activity_vertical_space_normal">16dp</dimen>
+    <dimen name="activity_vertical_space_small">8dp</dimen>
+
+    <dimen name="activity_horizontal_space_normal">16dp</dimen>
+    <dimen name="activity_horizontal_space_small">8dp</dimen>
+
+    <!-- MainActivity -->
+    <dimen name="activity_main_button_corners">16dp</dimen>
+    <!-- /MainActivity -->
+
+    <!--=========================================================================================-->
+    <!--== SP ===================================================================================-->
+    <!--=========================================================================================-->
+
+    <dimen name="app_theme_text_small_size">12sp</dimen>
+
+</resources>
