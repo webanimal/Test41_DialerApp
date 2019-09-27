@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ru.webanimal.Test41_DialerApp">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -12,11 +13,10 @@
         android:allowBackup="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        >
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name="ru.webanimal.Test41_DialerApp.MainActivity"
-            android:exported="false" >
+            android:name="ru.webanimal.Test41_DialerApp.MainActivity" >
 
             <intent-filter>
 
