@@ -16,13 +16,6 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     // =============================================================================================
-    // Fields
-    // =============================================================================================
-
-    private boolean askingPermission = false;
-
-
-    // =============================================================================================
     // Listeners
     // =============================================================================================
 
@@ -30,14 +23,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             try {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
-                        askingPermission = true;
-                        return;
-                    }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                        && checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                    return;
                 }
-                call();
+
+                dial();
 
             } catch (Exception ignored) {
             }
@@ -71,15 +64,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 1) {
-            if (grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                    && askingPermission == true) {
+    public void onRequestPermissionsResult(
+            int requestCode,
+            @NonNull String[] permissions,
+            @NonNull int[] grantResults) {
 
-                askingPermission = false;
-                call();
-            }
+        if (requestCode == 1
+                && grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            dial();
         }
     }
 
@@ -92,14 +86,15 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(setEnabled ? clickListener : null);
     }
 
-    private void call() {
+    private void dial() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:+79999999999"));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                return;
-            }
-        }
         startActivity(intent);
     }
 }
